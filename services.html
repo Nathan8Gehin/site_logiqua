@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Services - LOGIQUA Automation</title>
+    <style>
+        /* Couleurs de la charte graphique */
+        :root {
+            --orange: #F59000;
+            --noir: #1A1A1A;
+            --blanc: #FFFFFF;
+            --gris-clair: #F4F4F4;
+            --gris-fonce: #4D4D4D;
+        }
+
+        /* Réinitialisation de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--blanc);
+            color: var(--noir);
+            line-height: 1.6;
+        }
+
+        /* En-tête et Navigation (Identique à l'accueil) */
+        header {
+            background-color: var(--noir);
+            color: var(--blanc);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .logo-img {
+            max-height: 90px;
+            width: auto;
+            display: block;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--blanc);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover, nav a.actif {
+            color: var(--orange);
+        }
+
+        /* En-tête de la page Services */
+        .page-header {
+            background-color: var(--noir);
+            color: var(--blanc);
+            padding: 4rem 5%;
+            text-align: center;
+            border-bottom: 5px solid var(--orange);
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--gris-clair);
+            margin-top: 1rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Grille des services */
+        .services-container {
+            padding: 5rem 5%;
+            background-color: var(--blanc);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        /* Carte de service individuelle */
+        .service-card {
+            background-color: var(--gris-clair);
+            padding: 2.5rem 2rem;
+            border-radius: 8px;
+            border-top: 5px solid var(--orange);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            color: var(--noir);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Ligne décorative sous le titre */
+        .service-card h3::after {
+            content: '';
+            display: block;
+            height: 3px;
+            width: 50px;
+            background-color: var(--orange);
+            margin-top: 10px;
+        }
+
+        .service-card ul {
+            list-style: none;
+            color: var(--gris-fonce);
+        }
+
+        .service-card ul li {
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        /* Puces personnalisées orange */
+        .service-card ul li::before {
+            content: '■';
+            color: var(--orange);
+            font-size: 0.8rem;
+            position: absolute;
+            left: 0;
+            top: 4px;
+        }
+
+        /* Section Partenariat */
+        .partenariat {
+            background-color: var(--noir);
+            color: var(--blanc);
+            padding: 4rem 5%;
+            text-align: center;
+            border-top: 5px solid var(--orange);
+        }
+
+        .partenariat h2 {
+            color: var(--orange);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .partenariat p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--gris-clair);
+        }
+
+        /* Pied de page */
+        footer {
+            background-color: #111;
+            color: #888;
+            text-align: center;
+            padding: 2rem 5%;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul { flex-direction: column; gap: 1rem; padding-top: 1.5rem;}
+            header { flex-direction: column; }
+            .logo-img { margin-bottom: 1rem; max-height: 70px; }
+            .page-header h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- EN-TÊTE -->
+    <!-- EN-TÊTE -->
+    <header>
+        <div class="logo">
+            <img src="2004_Logo2.bmp" alt="Logo LOGIQUA Automation" class="logo-img">
+        </div>
+        <nav style="display: flex; align-items: center; gap: 3rem;">
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="services.html" class="actif">Nos services</a></li>
+                <li><a href="histoire.html">Histoire</a></li>
+                <li><a href="equipe.html">Qui sommes-nous</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            
+            <!-- Sélecteur de Langues avec Drapeaux -->
+            <div class="lang-selector" style="display: flex; gap: 10px; font-size: 1.4rem; border-left: 2px solid #444; padding-left: 20px;">
+                <a href="index.html" title="Français" style="text-decoration: none; opacity: 1;">🇫🇷</a>
+                <a href="en/index.html" title="English" style="text-decoration: none; opacity: 0.5; transition: opacity 0.3s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5">🇬🇧</a>
+                <a href="de/index.html" title="Deutsch" style="text-decoration: none; opacity: 0.5; transition: opacity 0.3s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5">🇩🇪</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- EN-TÊTE DE PAGE -->
+    <section class="page-header">
+        <h1>Nos Domaines d'Intervention</h1>
+        <p>Des prestations sur mesure adaptées à vos besoins, dans le strict respect de votre cahier des charges et de la philosophie de votre entreprise.</p>
+    </section>
+
+    <!-- CONTENU PRINCIPAL : GRILLE DES SERVICES -->
+    <main class="services-container">
+        <div class="services-grid">
+            
+            <!-- Carte 1 -->
+            <div class="service-card">
+                <h3>Études Électriques</h3>
+                <ul>
+                    <li>Étude de faisabilité et définition du matériel.</li>
+                    <li>Réalisation de schémas électriques sous Autocad, Eplan P8 et See Electrical.</li>
+                    <li>Rédaction de l'analyse fonctionnelle en collaboration avec le client.</li>
+                    <li>Définition de l'architecture matérielle.</li>
+                </ul>
+            </div>
+
+            <!-- Carte 2 -->
+            <div class="service-card">
+                <h3>Automatisme Industriel</h3>
+                <ul>
+                    <li>Programmation d'automates industriels.</li>
+                    <li>Développement de pupitres opérateurs et de superviseurs évolués.</li>
+                    <li>Programmation de commande d'axes et de positionnement.</li>
+                    <li>Interfaçage de systèmes divers : variateurs de fréquences, robots, systèmes de pesage, thermorégulateurs...</li>
+		    <li>Paramétrage de réseaux industriels.</li>
+                </ul>
+            </div>
+
+            <!-- Carte 3 (Anciennement en bas de page) -->
+            <div class="service-card">
+                <h3>Travaux Électriques & Câblage</h3>
+                <ul>
+                    <li>Fourniture de matériels électriques industriels.</li>
+                    <li>Réalisation d'armoires et de coffrets électriques.</li>
+                    <li>Câblages de machines et d'installation sur sites.</li>
+                    <li>Prestation globale clé en main en partenariat étroit avec la société Delta-Fil.</li>
+                </ul>
+            </div>
+
+            <!-- Carte 4 -->
+            <div class="service-card">
+                <h3>Mise en Service & Suivi</h3>
+                <ul>
+                    <li>Tests des installations et des fonctionnalités.</li>
+                    <li>Mise au point et mise en fonctionnement des équipements sur site.</li>
+                    <li>Suivi de l'industrialisation pour optimiser vos machines.</li>
+                    <li>Amélioration continue, dépannage et maintenance des installations.</li>
+                </ul>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- SECTION PARTENARIAT DELTA-FIL REDÉPLOYÉE -->
+    <section class="partenariat">
+        <h2>Machines & Process</h2>
+        <p>Nous assurons l'étude et la réalisation de machines spéciales ainsi que de processus spécifiques. Notre savoir-faire englobe la mise en œuvre de process de fabrication continus et discontinus, tout en intégrant la gestion de recette et la traçabilité des données industrielles.</p>
+    </section>
+
+    <!-- PIED DE PAGE -->
+    <footer>
+        <p>&copy; 2026 LOGIQUA Automation - Bas-Rhin, Haguenau (67500). Tous droits réservés.</p>
+    </footer>
+
+</body>
+</html>

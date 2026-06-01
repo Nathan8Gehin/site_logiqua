@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qui sommes-nous - LOGIQUA Automation</title>
+    <style>
+        /* Couleurs de la charte graphique */
+        :root {
+            --orange: #F59000;
+            --noir: #1A1A1A;
+            --blanc: #FFFFFF;
+            --gris-clair: #F4F4F4;
+            --gris-fonce: #333333;
+        }
+
+        /* Réinitialisation de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--blanc);
+            color: var(--noir);
+            line-height: 1.6;
+        }
+
+        /* En-tête et Navigation */
+        header {
+            background-color: var(--noir);
+            color: var(--blanc);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .logo-img {
+            max-height: 90px;
+            width: auto;
+            display: block;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--blanc);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover, nav a.actif {
+            color: var(--orange);
+        }
+
+        /* En-tête de page (Fond noir) */
+        .page-header {
+            background-color: var(--noir);
+            color: var(--blanc);
+            padding: 4rem 5%;
+            text-align: center;
+            border-bottom: 5px solid var(--orange);
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--gris-clair);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Section Équipe */
+        .equipe-container {
+            padding: 5rem 5%;
+            background-color: var(--blanc);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Titre de section pour les dirigeants */
+        .section-titre {
+            text-align: center;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            margin-bottom: 3rem;
+            color: var(--noir);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-titre::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--orange);
+        }
+
+        /* Système Flexbox pour les grilles */
+        .equipe-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 5rem;
+        }
+
+        /* Carte de membre */
+        .membre-carte {
+            background-color: var(--gris-clair);
+            border-radius: 12px;
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 5px solid var(--orange);
+            flex: 1 1 300px;
+            max-width: 350px;
+        }
+
+        /* Mise en avant des dirigeants */
+        .dirigeant-carte {
+            max-width: 450px;
+            border-bottom: 6px solid var(--orange);
+        }
+
+        .membre-carte:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Avatar */
+        .membre-avatar {
+            width: 120px;
+            height: 120px;
+            background-color: var(--blanc);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 4rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border: 3px solid var(--orange);
+        }
+
+        .dirigeant-carte .membre-avatar {
+            width: 140px;
+            height: 140px;
+            font-size: 5rem;
+        }
+
+        /* Informations du membre */
+        .membre-info h3 {
+            font-size: 1.6rem;
+            color: var(--noir);
+            margin-bottom: 0.2rem;
+            text-transform: uppercase;
+        }
+
+        .membre-info h4 {
+            font-size: 1.1rem;
+            color: var(--orange);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .membre-info p {
+            font-size: 1.05rem;
+            color: var(--gris-fonce);
+            line-height: 1.5;
+            font-style: italic;
+        }
+
+        .membre-info p::before { content: '« '; color: var(--orange); font-weight: bold; }
+        .membre-info p::after { content: ' »'; color: var(--orange); font-weight: bold; }
+
+        /* Ligne de séparation */
+        .separateur {
+            border: 0;
+            height: 1px;
+            background: #eee;
+            margin: 4rem auto;
+            max-width: 800px;
+        }
+
+        /* Pied de page */
+        footer {
+            background-color: #111;
+            color: #888;
+            text-align: center;
+            padding: 2rem 5%;
+            font-size: 1rem;
+            margin-top: 3rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul { flex-direction: column; gap: 1rem; padding-top: 1.5rem;}
+            header { flex-direction: column; }
+            .logo-img { margin-bottom: 1rem; max-height: 70px; }
+            .equipe-grid { gap: 2rem; }
+            .membre-carte { max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- EN-TÊTE -->
+    <header>
+        <div class="logo">
+            <img src="2004_Logo2.bmp" alt="Logo LOGIQUA Automation" class="logo-img">
+        </div>
+        <nav style="display: flex; align-items: center; gap: 3rem;">
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="services.html">Nos services</a></li>
+                <li><a href="histoire.html">Histoire</a></li>
+                <li><a href="equipe.html" class="actif">Qui sommes-nous</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            
+            <!-- Sélecteur de Langues avec Drapeaux -->
+            <div class="lang-selector" style="display: flex; gap: 10px; font-size: 1.4rem; border-left: 2px solid #444; padding-left: 20px;">
+                <a href="index.html" title="Français" style="text-decoration: none; opacity: 1;">🇫🇷</a>
+                <a href="en/index.html" title="English" style="text-decoration: none; opacity: 0.5; transition: opacity 0.3s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5">🇬🇧</a>
+                <a href="de/index.html" title="Deutsch" style="text-decoration: none; opacity: 0.5; transition: opacity 0.3s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5">🇩🇪</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- EN-TÊTE DE PAGE -->
+    <section class="page-header">
+        <h1>Notre Équipe</h1>
+        <p>L'intelligence collective au service de votre outil de production. Découvrez les visages qui font la force de LOGIQUA Automation.</p>
+    </section>
+
+    <main class="equipe-container">
+        
+        <!-- SECTION DIRIGEANTS -->
+        <h2 class="section-titre">La Direction</h2>
+        <div class="equipe-grid">
+            
+            <!-- Profil 1 - Gilbert BAUER -->
+            <div class="membre-carte dirigeant-carte">
+                <div class="membre-avatar">👨‍💼</div>
+                <div class="membre-info">
+                    <h3>Gilbert BAUER</h3>
+                    <h4>Co-gérant & Automaticien</h4>
+                    <p>Avec mon expérience du terrain, j'accompagne nos projets en suivant de près les évolutions technologiques. Je mets un point d'honneur à livrer des systèmes aboutis, sans dysfonctionnement, par respect pour la confiance que nous accordent nos clients.</p>
+                </div>
+            </div>
+
+            <!-- Profil 2 - Mathieu GEHIN -->
+            <div class="membre-carte dirigeant-carte">
+                <div class="membre-avatar">👨‍💼</div>
+                <div class="membre-info">
+                    <h3>Mathieu GEHIN</h3>
+                    <h4>Co-gérant & Automaticien</h4>
+                    <p>Mon métier de base, c’est l’automatisme, et mettre en service des machines c’est ce qui me passionne. J'endosse aussi la casquette de co-gérant : je m'occupe également de l'administration et de l’organisation générale de l’entreprise pour garantir notre réactivité.</p>
+                </div>
+            </div>
+        </div>
+
+        <hr class="separateur">
+
+        <!-- SECTION TECHNIQUE -->
+        <h2 class="section-titre">Bureau d'études</h2>
+        <div class="equipe-grid">
+            
+            <!-- Profil 3 - Hubert KAERCHER -->
+            <div class="membre-carte">
+                <div class="membre-avatar">👨‍🔧</div>
+                <div class="membre-info">
+                    <h3>Hubert KAERCHER</h3>
+                    <h4>Projeteur et Dessinateur Électrique</h4>
+                    <p>Mon rôle consiste à veiller à la fiabilité de nos études. J'ai à cœur de vérifier chaque détail avec soin pour que nos schémas électriques soient les plus précis possibles, afin d'assurer une mise en service sereine.</p>
+                </div>
+            </div>
+
+            <!-- Profil 4 - Eric RINCKWALD -->
+            <div class="membre-carte">
+                <div class="membre-avatar">👨‍🔬</div>
+                <div class="membre-info">
+                    <h3>Eric RINCKWALD</h3>
+                    <h4>Projeteur et Dessinateur Électrique</h4>
+                    <p>J’apprécie particulièrement les projets qui demandent de la réflexion technique. J’essaie d'apporter des solutions variées et adaptées à chaque équipement, en cherchant toujours le meilleur compromis entre innovation et efficacité.</p>
+                </div>
+            </div>
+
+            <!-- Profil 5 - Quentin MEYER -->
+            <div class="membre-carte">
+                <div class="membre-avatar">👨‍💻</div>
+                <div class="membre-info">
+                    <h3>Quentin MEYER</h3>
+                    <h4>Projeteur et Dessinateur Électrique</h4>
+                    <p>Je travaille en lien étroit avec mes collègues plus expérimentés. Mon objectif est d'apprendre au quotidien à leurs côtés pour monter en compétence, tout en apportant mon soutien et mon énergie au bon déroulement de nos projets.</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- PIED DE PAGE -->
+    <footer>
+        <p>&copy; 2026 LOGIQUA Automation - Bas-Rhin, Haguenau (67500). Tous droits réservés.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About us - LOGIQUA Automation</title>
+    <style>
+        :root {
+            --orange: #F59000;
+            --noir: #1A1A1A;
+            --blanc: #FFFFFF;
+            --gris-clair: #F4F4F4;
+            --gris-fonce: #333333;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--blanc); color: var(--noir); line-height: 1.6; }
+        header { background-color: var(--noir); color: var(--blanc); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        .logo-img { max-height: 90px; width: auto; display: block; }
+        nav { display: flex; align-items: center; gap: 3rem; }
+        nav ul { list-style: none; display: flex; gap: 2rem; align-items: center; }
+        nav a { color: var(--blanc); text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        nav a:hover, nav a.actif { color: var(--orange); }
+        .lang-selector { display: flex; gap: 10px; font-size: 1.4rem; border-left: 2px solid #444; padding-left: 20px; }
+        .lang-selector a { text-decoration: none; transition: opacity 0.3s; }
+        .page-header { background-color: var(--noir); color: var(--blanc); padding: 4rem 5%; text-align: center; border-bottom: 5px solid var(--orange); }
+        .page-header h1 { font-size: 3rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1rem; }
+        .page-header p { font-size: 1.2rem; color: var(--gris-clair); max-width: 800px; margin: 0 auto; }
+        .equipe-container { padding: 5rem 5%; background-color: var(--blanc); max-width: 1200px; margin: 0 auto; }
+        .section-titre { text-align: center; font-size: 1.8rem; text-transform: uppercase; margin-bottom: 3rem; color: var(--noir); position: relative; padding-bottom: 10px; }
+        .section-titre::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 3px; background-color: var(--orange); }
+        .equipe-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 3rem; margin-bottom: 5rem; }
+        .membre-carte { background-color: var(--gris-clair); border-radius: 12px; padding: 3rem 2rem; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; overflow: hidden; border-bottom: 5px solid var(--orange); flex: 1 1 300px; max-width: 350px; }
+        .dirigeant-carte { max-width: 450px; border-bottom: 6px solid var(--orange); }
+        .membre-carte:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .membre-avatar { width: 120px; height: 120px; background-color: var(--blanc); border-radius: 50%; margin: 0 auto 1.5rem auto; display: flex; justify-content: center; align-items: center; font-size: 4rem; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border: 3px solid var(--orange); }
+        .dirigeant-carte .membre-avatar { width: 140px; height: 140px; font-size: 5rem; }
+        .membre-info h3 { font-size: 1.6rem; color: var(--noir); margin-bottom: 0.2rem; text-transform: uppercase; }
+        .membre-info h4 { font-size: 1.1rem; color: var(--orange); margin-bottom: 1.5rem; font-weight: 500; }
+        .membre-info p { font-size: 1.05rem; color: var(--gris-fonce); line-height: 1.5; font-style: italic; }
+        .membre-info p::before { content: '“ '; color: var(--orange); font-weight: bold; }
+        .membre-info p::after { content: ' ”'; color: var(--orange); font-weight: bold; }
+        .separateur { border: 0; height: 1px; background: #eee; margin: 4rem auto; max-width: 800px; }
+        footer { background-color: #111; color: #888; text-align: center; padding: 2rem 5%; font-size: 1rem; margin-top: 3rem; }
+        @media (max-width: 768px) {
+            nav { flex-direction: column; gap: 1.5rem; }
+            nav ul { flex-direction: column; gap: 1rem; padding-top: 1.5rem;}
+            header { flex-direction: column; }
+            .logo-img { margin-bottom: 1rem; max-height: 70px; }
+            .equipe-grid { gap: 2rem; }
+            .membre-carte { max-width: 100%; }
+            .lang-selector { border-left: none; padding-left: 0; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo"><img src="../2004_Logo2.bmp" alt="Logo" class="logo-img"></div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="histoire.html">History</a></li>
+                <li><a href="equipe.html" class="actif">About us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="lang-selector">
+                <a href="../equipe.html" title="Français" style="opacity: 0.5;">🇫🇷</a>
+                <a href="equipe.html" title="English" style="opacity: 1; font-weight: bold;">🇬🇧</a>
+                <a href="../de/equipe.html" title="Deutsch" style="opacity: 0.5;">🇩🇪</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="page-header">
+        <h1>Our Professional Team</h1>
+        <p>Collective intelligence driving your production assets. Meet the dedicated minds behind LOGIQUA Automation's reliability.</p>
+    </section>
+
+    <main class="equipe-container">
+        <h2 class="section-titre">Management</h2>
+        <div class="equipe-grid">
+            <div class="membre-carte dirigeant-carte">
+                <div class="membre-avatar">👨‍💼</div>
+                <div class="membre-info">
+                    <h3>Gilbert BAUER</h3>
+                    <h4>Co-owner & Automation Engineer</h4>
+                    <p>With my technical field experience, I oversee our projects while tracking state-of-the-art tech changes closely. I emphasize delivering polished, bug-free automation configurations out of deep respect for the trust our industrial clients extend to us.</p>
+                </div>
+            </div>
+
+            <div class="membre-carte dirigeant-carte">
+                <div class="membre-avatar">👨‍💼</div>
+                <div class="membre-info">
+                    <h3>Mathieu GEHIN</h3>
+                    <h4>Co-owner & Automation Engineer</h4>
+                    <p>My core industrial background lies in hardware automation, and commissioning machines is what truly drives my professional life. Balancing roles as co-manager, I oversee our group legal administration and general workflow structures to ensure flawless enterprise reactivity.</p>
+                </div>
+            </div>
+        </div>
+
+        <hr class="separateur">
+
+        <h2 class="section-titre">Engineering Department</h2>
+        <div class="equipe-grid">
+            <div class="membre-carte">
+                <div class="membre-avatar">👨‍💻</div>
+                <div class="membre-info">
+                    <h3>Hubert KAERCHER</h3>
+                    <h4>Electrical Designer & Draftsman</h4>
+                    <p>My job focuses on validating the overall reliability of our technical studies. I pay meticulous attention to double-checking every small detail so that our master wiring diagrams remain flawlessly precise, enabling seamless, stress-free production commissions.</p>
+                </div>
+            </div>
+
+            <div class="membre-carte">
+                <div class="membre-avatar">👨‍💻</div>
+                <div class="membre-info">
+                    <h3>Eric RINCKWALD</h3>
+                    <h4>Electrical Designer & Draftsman</h4>
+                    <p>I thrive on specialized projects requiring rigorous industrial reflection. I aim to supply distinct, well-tailored technical routes for every machinery framework, consistently chasing the ultimate balance between design innovation and operating productivity.</p>
+                </div>
+            </div>
+
+            <div class="membre-carte">
+                <div class="membre-avatar">👨‍💻</div>
+                <div class="membre-info">
+                    <h3>Quentin MEYER</h3>
+                    <h4>Electrical Designer & Draftsman</h4>
+                    <p>I operate in tight integration with our senior technical engineering peers. My daily purpose centers on learning directly from their deep engineering knowledge to elevate my mastery, while channeling positive drive and personal focus into securing fluid corporate project completions.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 LOGIQUA Automation - Bas-Rhin, Haguenau (67500). All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geschichte - LOGIQUA Automation</title>
+    <style>
+        :root {
+            --orange: #F59000;
+            --noir: #1A1A1A;
+            --blanc: #FFFFFF;
+            --gris-clair: #F4F4F4;
+            --gris-fonce: #4D4D4D;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--blanc); color: var(--noir); line-height: 1.6; }
+        header { background-color: var(--noir); color: var(--blanc); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        .logo-img { max-height: 90px; width: auto; display: block; }
+        nav { display: flex; align-items: center; gap: 3rem; }
+        nav ul { list-style: none; display: flex; gap: 2rem; align-items: center; }
+        nav a { color: var(--blanc); text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        nav a:hover, nav a.actif { color: var(--orange); }
+        .lang-selector { display: flex; gap: 10px; font-size: 1.4rem; border-left: 2px solid #444; padding-left: 20px; }
+        .lang-selector a { text-decoration: none; transition: opacity 0.3s; }
+        .page-header { background-color: var(--noir); color: var(--blanc); padding: 4rem 5%; text-align: center; border-bottom: 5px solid var(--orange); }
+        .page-header h1 { font-size: 3rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1rem; }
+        .page-header p { font-size: 1.2rem; color: var(--gris-clair); max-width: 800px; margin: 0 auto; }
+        .timeline-section { padding: 5rem 5%; background-color: var(--blanc); max-width: 1000px; margin: 0 auto; }
+        .timeline-item { display: flex; gap: 2rem; margin-bottom: 4rem; align-items: flex-start; }
+        .timeline-date { background-color: var(--orange); color: var(--blanc); padding: 1rem 1.5rem; font-size: 1.5rem; font-weight: bold; border-radius: 4px; min-width: 180px; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .timeline-content { background-color: var(--gris-clair); padding: 2.5rem; border-radius: 8px; border-left: 4px solid var(--noir); flex-grow: 1; box-shadow: 0 2px 10px rgba(0,0,0,0.03); transition: transform 0.3s ease; }
+        .timeline-content:hover { transform: translateX(10px); }
+        .timeline-content h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--noir); text-transform: uppercase; }
+        .timeline-content p { color: var(--gris-fonce); font-size: 1.1rem; }
+        .synergie-section { background-color: var(--noir); color: var(--blanc); padding: 5rem 5% 6rem 5%; display: flex; align-items: center; gap: 4rem; border-top: 5px solid var(--orange); }
+        .synergie-text { flex: 1; }
+        .synergie-text h2 { color: var(--orange); font-size: 2.2rem; margin-bottom: 1.5rem; text-transform: uppercase; }
+        .synergie-text p { font-size: 1.15rem; color: var(--gris-clair); margin-bottom: 1.5rem; }
+        .stats-container { flex: 1.8; display: flex; gap: 2rem; align-items: flex-end; }
+        .stats-colonne { flex: 1; display: flex; flex-direction: column; gap: 1.5rem; }
+        .synergie-logo { text-align: center; padding-bottom: 0.5rem; height: 90px; display: flex; align-items: center; justify-content: center; }
+        .synergie-logo img { max-width: 100%; max-height: 80px; width: auto; height: auto; filter: drop-shadow(0 0 10px rgba(245, 144, 0, 0.2)); }
+        .stat-box { background-color: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 6px; border-left: 3px solid var(--orange); transition: background-color 0.3s ease; min-height: 160px; }
+        .stat-box:hover { background-color: rgba(255,255,255,0.15); }
+        .stat-box h4 { font-size: 1.2rem; color: var(--orange); margin-bottom: 0.5rem; }
+        footer { background-color: #111; color: #888; text-align: center; padding: 2.5rem 5%; font-size: 1rem; border-top: 1px solid rgba(255,255,255,0.05); }
+        @media (max-width: 950px) {
+            nav { flex-direction: column; gap: 1.5rem; }
+            nav ul { flex-direction: column; gap: 1rem; padding-top: 1.5rem;}
+            header { flex-direction: column; }
+            .logo-img { margin-bottom: 1rem; max-height: 70px; }
+            .timeline-item { flex-direction: column; gap: 1rem; }
+            .timeline-date { width: 100%; text-align: center; }
+            .synergie-section { flex-direction: column; text-align: center; gap: 3rem; }
+            .stats-container { width: 100%; flex-direction: column; gap: 3rem; }
+            .synergie-logo { height: auto; }
+            .stat-box { border-left: none; border-top: 3px solid var(--orange); min-height: auto; }
+            .lang-selector { border-left: none; padding-left: 0; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo"><img src="../2004_Logo2.bmp" alt="Logo" class="logo-img"></div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Startseite</a></li>
+                <li><a href="services.html">Leistungen</a></li>
+                <li><a href="histoire.html" class="actif">Geschichte</a></li>
+                <li><a href="equipe.html">Über uns</a></li>
+                <li><a href="contact.html">Kontakt</a></li>
+            </ul>
+            <div class="lang-selector">
+                <a href="../histoire.html" title="Français" style="opacity: 0.5;">🇫🇷</a>
+                <a href="../en/histoire.html" title="English" style="opacity: 0.5;">🇬🇧</a>
+                <a href="histoire.html" title="Deutsch" style="opacity: 1; font-weight: bold;">🇩🇪</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="page-header">
+        <h1>Unsere Geschichte</h1>
+        <p>Erfahren Sie mehr über den Werdegang unseres Unternehmens und die stetige Entwicklung unserer Kompetenzen im Laufe der Jahre.</p>
+    </section>
+
+    <main class="timeline-section">
+        <div class="timeline-item">
+            <div class="timeline-date">2001</div>
+            <div class="timeline-content">
+                <h3>Die Gründung</h3>
+                <p>LOGIQUA Automation wird von den beiden Co-Geschäftsführern Gilbert BAUER und Mathieu GEHIN gegründet. Zehn Jahre lang konzentrieren wir uns ausschließlich auf Programmierprojekte im Bereich der Automatisierung und bauen so eine fundierte Praxiserfahrung auf.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-date">2011</div>
+            <div class="timeline-content">
+                <h3>Der Zusammenschluss</h3>
+                <p>Um unsere Fähigkeiten im elektrotechnischen Bereich zu erweitern und unseren Kunden eine umfassendere Gesamtlösung anzubieten, gründen wir gemeinsam mit Fabrice DEBS das Partnerunternehmen DELTA-Fil.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-date">Heute</div>
+            <div class="timeline-content">
+                <h3>Parallele Entwicklung</h3>
+                <p>Seit diesem Zusammenschluss entwickeln sich beide Unternehmen erfolgreich Seite an Seite. LOGIQUA Automation widmet sich der Elektroplanung, dem Projektmanagement und der Softwareprogrammierung, während DELTA-Fil die Schaltschränke fertigt und die Verkabelungsarbeiten auf den Baustellen in verschiedenen Sektoren übernimmt.</p>
+            </div>
+        </div>
+    </main>
+
+    <section class="synergie-section">
+        <div class="synergie-text">
+            <h2>Eine ganzheitliche Vision</h2>
+            <p>Die enge Verzahnung zwischen unserem Planungsbüro und unseren Montageteams vor Ort ermöglicht uns eine enorme Reaktionsfähigkeit bei jeder industriellen Herausforderung, vom ersten Entwurf bis zur finalen Übergabe.</p>
+        </div>
+        
+        <div class="stats-container">
+            <div class="stats-colonne">
+                <div class="synergie-logo"><img src="../2004_Logo2.bmp" alt="Logo Logiqua"></div>
+                <div class="stat-box">
+                    <h4>LOGIQUA Automation</h4>
+                    <p>Unser Planungsbüro besteht aus einem kompetenten <strong>5-köpfigen Team</strong>, das für Projektmanagement, Elektroplanung und SPS-Programmierung zuständig ist.</p>
+                </div>
+            </div>
+            
+            <div class="stats-colonne">
+                <div class="synergie-logo"><img src="../Logo_Delta-Fil.jpg" alt="Logo Delta-Fil"></div>
+                <div class="stat-box">
+                    <h4>DELTA-Fil</h4>
+                    <p>Ein spezialisiertes Werkstattteam von <strong>6 Fachkräften</strong>, die den Schaltschrankbau und die Ausführung der Verkabelungsarbeiten vor Ort leiten.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 LOGIQUA Automation - Bas-Rhin, Haguenau (67500). Alle Rechte vorbehalten.</p>
+    </footer>
+</body>
+</html>

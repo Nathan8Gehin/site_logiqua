@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIQUA Automation - Ingénierie & Automatisme Industriel</title>
+    <style>
+        /* Couleurs de la charte graphique */
+        :root {
+            --orange: #F59000;
+            --noir: #1A1A1A;
+            --blanc: #FFFFFF;
+            --gris-clair: #F4F4F4;
+            --gris-fonce: #333333;
+        }
+
+        /* Réinitialisation de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--blanc);
+            color: var(--noir);
+            line-height: 1.6;
+        }
+
+        /* En-tête et Navigation */
+        header {
+            background-color: var(--noir);
+            color: var(--blanc);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .logo-img {
+            max-height: 90px;
+            width: auto;
+            display: block;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--blanc);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--orange);
+        }
+
+        /* Section Héro (Accueil) */
+        .hero {
+            background-color: var(--noir);
+            padding: 6rem 5%;
+            text-align: center;
+            border-bottom: 5px solid var(--orange);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: var(--blanc);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 span {
+            color: var(--orange);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 900px;
+            margin: 0 auto 2.5rem auto;
+            color: var(--gris-clair);
+        }
+
+        /* Section Pyramide Interactive */
+        .methodologie {
+            padding: 6rem 5%;
+            background-color: var(--blanc);
+            overflow-x: hidden;
+        }
+
+        .methodologie-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .methodologie-header h2 {
+            font-size: 2.8rem;
+            color: var(--noir);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .methodologie-header p {
+            color: var(--gris-fonce);
+            font-size: 1.2rem;
+        }
+
+        /* Conteneur interactif principal */
+        .pyramid-interactive-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 550px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        /* La Pyramide Graphique */
+        .pyramid-graphic {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            transform: translateX(0);
+            z-index: 5;
+            filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.2));
+        }
+
+        /* Décalage à droite au clic */
+        .pyramid-interactive-wrapper.is-active .pyramid-graphic {
+            transform: translateX(300px);
+        }
+
+        /* TRANCHES DE LA PYRAMIDE - DESIGN 3D ULTRA MODERNE */
+        .pyramid-slice {
+            display: flex;
+            justify-content: center;
+            position: relative;
+            cursor: pointer;
+            /* Effet 3D inactif (Gris/Noir avec arête centrale) */
+            background: linear-gradient(90deg, #555555 0%, #333333 50%, #1A1A1A 50%, #050505 100%);
+            /* Transition élastique (rebond subtil) */
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.4s ease;
+        }
+
+        /* Le calque orange (invisible par défaut) pour un fondu de couleur fluide */
+        .pyramid-slice::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            /* Effet 3D actif (Orange lumineux avec arête centrale) */
+            background: linear-gradient(90deg, #FFB347 0%, var(--orange) 50%, #CC7A00 50%, #8F5600 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+        }
+
+        /* Effet de survol */
+        .pyramid-slice:hover:not(.active-slice) {
+            transform: scale(1.02) translateY(-2px);
+            filter: brightness(1.2);
+        }
+
+        /* ÉTAT ACTIF (Au clic) */
+        .pyramid-slice.active-slice {
+            transform: scale(1.06);
+            z-index: 10;
+            /* Ombre portée lumineuse orange */
+            filter: drop-shadow(0 15px 30px rgba(245, 144, 0, 0.5));
+        }
+
+        /* On fait apparaître le calque orange en douceur */
+        .pyramid-slice.active-slice::before {
+            opacity: 1;
+        }
+
+        /* Tailles et formes (clip-path pour couper en triangle) */
+        .slice-top {
+            width: 200px; 
+            height: 140px;
+            clip-path: polygon(50% 0, 100% 100%, 0 100%);
+        }
+
+        .slice-mid {
+            width: 400px; 
+            height: 140px;
+            clip-path: polygon(25% 0, 75% 0, 100% 100%, 0 100%);
+        }
+
+        .slice-bot {
+            width: 600px; 
+            height: 140px;
+            clip-path: polygon(16.66% 0, 83.33% 0, 100% 100%, 0 100%);
+        }
+
+        /* Textes intégrés DANS la pyramide */
+        .slice-content {
+            position: absolute;
+            bottom: 15px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.1;
+            z-index: 2; /* Garde le texte au-dessus du fond orange */
+        }
+
+        /* Chiffres (Orange par défaut) */
+        .slice-num {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--orange);
+            letter-spacing: 2px;
+            margin-bottom: 2px;
+            transition: color 0.4s ease;
+        }
+
+        /* Textes (Blanc par défaut) */
+        .slice-label {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--blanc);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.4s ease;
+        }
+
+        /* Ajustement spécial pour le haut */
+        .slice-top .slice-label {
+            font-size: 1rem;
+            line-height: 1.2;
+        }
+
+        /* INTERVERSION DES COULEURS AU CLIC */
+        .active-slice .slice-num,
+        .active-slice .slice-label {
+            color: var(--noir); /* Contraste parfait sur l'orange */
+        }
+
+        /* Panneau de détails (Texte à gauche) */
+        .details-panel {
+            position: absolute;
+            left: 2%;
+            width: 500px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-50px);
+            transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            z-index: 1;
+        }
+
+        .pyramid-interactive-wrapper.is-active .details-panel {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
+        .detail-card {
+            display: none;
+            background-color: var(--gris-clair);
+            padding: 3rem 2.5rem;
+            border-radius: 12px;
+            border-left: 6px solid var(--orange);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .detail-card h4 {
+            color: var(--noir);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .detail-card h4 span {
+            color: var(--orange);
+            font-size: 2.5rem;
+            font-weight: 900;
+        }
+
+        .detail-card ul {
+            padding-left: 20px;
+            color: var(--gris-fonce);
+            font-size: 1.2rem;
+        }
+
+        .detail-card ul li {
+            margin-bottom: 12px;
+        }
+
+        /* Section Clients */
+        .clients {
+            background-color: var(--noir);
+            color: var(--blanc);
+            padding: 5rem 5%;
+            text-align: center;
+            border-top: 5px solid var(--orange);
+        }
+
+        .clients h2 {
+            color: var(--orange);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            text-transform: uppercase;
+        }
+
+        .clients p {
+            font-size: 1.3rem;
+            color: var(--gris-clair);
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        /* Pied de page */
+        footer {
+            background-color: #111;
+            color: #888;
+            text-align: center;
+            padding: 2rem 5%;
+            font-size: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .pyramid-interactive-wrapper.is-active .pyramid-graphic {
+                transform: translateX(0);
+            }
+            .pyramid-interactive-wrapper {
+                flex-direction: column;
+                min-height: auto;
+                gap: 3rem;
+            }
+            .details-panel {
+                position: relative;
+                left: auto;
+                width: 100%;
+                max-width: 600px;
+                transform: translateY(-20px);
+            }
+            .pyramid-interactive-wrapper.is-active .details-panel {
+                transform: translateY(0);
+            }
+            
+            .slice-top { width: 150px; height: 105px; }
+            .slice-mid { width: 300px; height: 105px; }
+            .slice-bot { width: 450px; height: 105px; }
+            .slice-label { font-size: 1.1rem; }
+            .slice-top .slice-label { font-size: 0.9rem; }
+            
+            nav ul { flex-direction: column; gap: 1rem; text-align: center; padding-top: 1.5rem;}
+            header { flex-direction: column; }
+            .logo-img { margin-bottom: 1rem; max-height: 70px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- EN-TÊTE -->
+    <header>
+        <div class="logo">
+            <img src="2004_Logo2.bmp" alt="Logo LOGIQUA Automation" class="logo-img">
+        </div>
+        <nav style="display: flex; align-items: center; gap: 3rem;">
+            <ul>
+                <li><a href="index.html" style="color: var(--orange);">Accueil</a></li>
+                <li><a href="services.html">Nos services</a></li>
+                <li><a href="histoire.html">Histoire</a></li>
+                <li><a href="equipe.html">Qui sommes-nous</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            
+            <!-- Sélecteur de Langues avec Drapeaux -->
+            <div class="lang-selector" style="display: flex; gap: 10px; font-size: 1.4rem; border-left: 2px solid #444; padding-left: 20px;">
+                <a href="index.html" title="Français" style="text-decoration: none; opacity: 1;">🇫🇷</a>
+                <a href="en/index.html" title="English" style="text-decoration: none; opacity: 0.5; transition: opacity 0.3s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5">🇬🇧</a>
+                <a href="de/index.html" title="Deutsch" style="text-decoration: none; opacity: 0.5; transition: opacity 0.3s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5">🇩🇪</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- CONTENU PRINCIPAL -->
+    <main>
+        <section class="hero">
+            <h1>Des programmes <span>simples</span> pour Vos Machines <span>complexes</span></h1>
+            <p>Vous cherchez à fiabiliser votre outil de production ? LOGIQUA Automation conçoit et programme les solutions sur-mesure dont vos machines spéciales et process continus ont besoin. Un partenaire de confiance, tout simplement.</p>
+        </section>
+
+        <!-- SECTION PYRAMIDE INTERACTIVE 3D -->
+        <section class="methodologie">
+            <div class="methodologie-header">
+                <h2>Notre Méthodologie</h2>
+                <p>Votre projet industriel, de l'idée jusqu'à la mise en production.</p>
+            </div>
+            
+            <div class="pyramid-interactive-wrapper" id="interactive-wrapper">
+                
+                <!-- Panneau Textuel -->
+                <div class="details-panel">
+                    
+                    <div class="detail-card" id="card-3">
+                        <h4><span>03</span> MISE EN SERVICE</h4>
+                        <ul>
+                            <li>Tests rigoureux et intégration sur site</li>
+                            <li>Mise en fonctionnement et industrialisation</li>
+                            <li>Suivi dans le temps et optimisation continue</li>
+                        </ul>
+                    </div>
+
+                    <div class="detail-card" id="card-2">
+                        <h4><span>02</span> PROGRAMMATION</h4>
+                        <ul>
+                            <li>Développement d'automates industriels.</li>
+                            <li>Création d'interfaces homme-machine (IHM) intuitives</li>
+                            <li>Pilotage haute performance (gestion d'axes, variateurs...)</li>
+                        </ul>
+                    </div>
+
+                    <div class="detail-card" id="card-1">
+                        <h4><span>01</span> ÉTUDES</h4>
+                        <ul>
+                            <li>Architecture électrique sur-mesure (Autocad, Eplan P8 & See Electrical)</li>
+                            <li>Étude de faisabilité et définition du matériel</li>
+                            <li>Analyse fonctionnelle en collaboration avec vos équipes</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <!-- Pyramide Graphique -->
+                <div class="pyramid-graphic">
+                    <div class="pyramid-slice slice-top" id="slice-3" onclick="openStep(3)">
+                        <div class="slice-content">
+                            <span class="slice-num">03</span>
+                            <span class="slice-label">MISE EN<br>ROUTE</span>
+                        </div>
+                    </div>
+                    <div class="pyramid-slice slice-mid" id="slice-2" onclick="openStep(2)">
+                        <div class="slice-content">
+                            <span class="slice-num">02</span>
+                            <span class="slice-label">PROGRAMMATION</span>
+                        </div>
+                    </div>
+                    <div class="pyramid-slice slice-bot" id="slice-1" onclick="openStep(1)">
+                        <div class="slice-content">
+                            <span class="slice-num">01</span>
+                            <span class="slice-label">ÉTUDES</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION CLIENTS -->
+        <section class="clients">
+            <h2>Nos clients historiques</h2>
+            <p>Hansella • Weil industries • Schaeffler • Merck Millipore • KBTech</p>
+        </section>
+    </main>
+
+    <!-- PIED DE PAGE -->
+    <footer>
+        <p>&copy; 2026 LOGIQUA Automation - Bas-Rhin, Haguenau (67500). Tous droits réservés.</p>
+    </footer>
+
+    <!-- SCRIPT POUR L'ANIMATION -->
+    <script>
+        function openStep(stepNumber) {
+            const wrapper = document.getElementById('interactive-wrapper');
+            const allCards = document.querySelectorAll('.detail-card');
+            const allSlices = document.querySelectorAll('.pyramid-slice');
+
+            wrapper.classList.add('is-active');
+
+            allCards.forEach(card => card.style.display = 'none');
+            allSlices.forEach(slice => slice.classList.remove('active-slice'));
+
+            document.getElementById('card-' + stepNumber).style.display = 'block';
+            document.getElementById('slice-' + stepNumber).classList.add('active-slice');
+        }
+    </script>
+
+</body>
+</html>

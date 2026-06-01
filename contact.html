@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - LOGIQUA Automation</title>
+    <style>
+        /* Couleurs de la charte graphique */
+        :root {
+            --orange: #F59000;
+            --noir: #1A1A1A;
+            --blanc: #FFFFFF;
+            --gris-clair: #F4F4F4;
+            --gris-fonce: #333333;
+        }
+
+        /* Réinitialisation de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--blanc);
+            color: var(--noir);
+            line-height: 1.6;
+        }
+
+        /* En-tête et Navigation */
+        header {
+            background-color: var(--noir);
+            color: var(--blanc);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .logo-img {
+            max-height: 90px;
+            width: auto;
+            display: block;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--blanc);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover, nav a.actif {
+            color: var(--orange);
+        }
+
+        /* En-tête de page (Fond noir) */
+        .page-header {
+            background-color: var(--noir);
+            color: var(--blanc);
+            padding: 4rem 5%;
+            text-align: center;
+            border-bottom: 5px solid var(--orange);
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--gris-clair);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Section Contact Épurée */
+        .contact-container {
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-intro {
+            font-size: 1.3rem;
+            color: var(--gris-fonce);
+            margin-bottom: 4rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Cartes d'informations */
+        .info-cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .carte-contact {
+            background-color: var(--gris-clair);
+            padding: 2.5rem 1.5rem;
+            border-radius: 12px;
+            border-bottom: 5px solid var(--orange);
+            flex: 1;
+            min-width: 280px;
+            max-width: 320px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .carte-contact:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .icon-bulle {
+            background-color: var(--noir);
+            color: var(--orange);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .carte-contact h3 {
+            font-size: 1.2rem;
+            color: var(--noir);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .carte-contact p, .carte-contact a {
+            font-size: 1.1rem;
+            color: var(--gris-fonce);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            word-wrap: break-word;
+        }
+
+        .carte-contact a:hover {
+            color: var(--orange);
+        }
+
+        .lien-action {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 10px 20px;
+            background-color: var(--noir);
+            color: var(--blanc) !important;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .lien-action:hover {
+            background-color: var(--orange);
+        }
+
+        /* Pied de page */
+        footer {
+            background-color: #111;
+            color: #888;
+            text-align: center;
+            padding: 2rem 5%;
+            font-size: 1rem;
+            margin-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul { flex-direction: column; gap: 1rem; padding-top: 1.5rem;}
+            header { flex-direction: column; }
+            .logo-img { margin-bottom: 1rem; max-height: 70px; }
+            .info-cards { gap: 1.5rem; }
+            .carte-contact { max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- EN-TÊTE -->
+    <header>
+        <div class="logo">
+            <img src="2004_Logo2.bmp" alt="Logo LOGIQUA Automation" class="logo-img">
+        </div>
+        <nav style="display: flex; align-items: center; gap: 3rem;">
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="services.html">Nos services</a></li>
+                <li><a href="histoire.html">Histoire</a></li>
+                <li><a href="equipe.html">Qui sommes-nous</a></li>
+                <li><a href="contact.html" class="actif">Contact</a></li>
+            </ul>
+            
+            <!-- Sélecteur de Langues avec Drapeaux -->
+            <div class="lang-selector" style="display: flex; gap: 10px; font-size: 1.4rem; border-left: 2px solid #444; padding-left: 20px;">
+                <a href="index.html" title="Français" style="text-decoration: none; opacity: 1;">🇫🇷</a>
+                <a href="en/index.html" title="English" style="text-decoration: none; opacity: 0.5; transition: opacity 0.3s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5">🇬🇧</a>
+                <a href="de/index.html" title="Deutsch" style="text-decoration: none; opacity: 0.5; transition: opacity 0.3s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5">🇩🇪</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- EN-TÊTE DE PAGE -->
+    <section class="page-header">
+        <h1>Contactez-nous</h1>
+        <p>Un projet ? Une question technique ? Notre équipe est à votre disposition.</p>
+    </section>
+
+    <!-- CONTENU PRINCIPAL : CARTES DE CONTACT -->
+    <main class="contact-container">
+        
+        <p class="contact-intro">Discutons de votre projet. Privilégiez un contact direct avec notre bureau d'études pour une prise en charge rapide de vos besoins en automatisme et informatique industrielle.</p>
+        
+        <div class="info-cards">
+            
+            <!-- Carte Téléphone -->
+            <div class="carte-contact">
+                <div class="icon-bulle">📞</div>
+                <h3>Téléphone</h3>
+                <p><a href="tel:+33388071772">03 88 07 17 72</a></p>
+                <a href="tel:+33388071772" class="lien-action">Appeler maintenant</a>
+            </div>
+
+            <!-- Carte Email 1 : LOGIQUA -->
+            <div class="carte-contact">
+                <div class="icon-bulle">✉️</div>
+                <h3>E-mail</h3>
+                <p><a href="mailto:gilbert.bauer@logiqua.fr">gilbert.bauer@logiqua.fr</a></p>
+                <a href="mailto:gilbert.bauer@logiqua.fr" class="lien-action">Écrire à BAUER Gilbert</a>
+            </div>
+
+            <!-- Carte Email 2 : Delta-Fil -->
+            <div class="carte-contact">
+                <div class="icon-bulle">✉️</div>
+                <h3>E-mail</h3>
+                <p><a href="mailto:mathieu.gehin@logiqua.fr">mathieu.gehin@logiqua.fr</a></p>
+                <a href="mailto:mathieu.gehin@logiqua.fr" class="lien-action">Écrire à GEHIN Mathieu</a>
+            </div>
+
+            <!-- Carte Adresse -->
+            <div class="carte-contact">
+                <div class="icon-bulle">📍</div>
+                <h3>Siège Social</h3>
+                <p>9A, rue Maryse Bastié</p>
+                <p>Haguenau, France</p>
+                <p style="font-weight: normal; font-size: 0.9rem; margin-top: 10px;">Bas-Rhin (67500)</p>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- PIED DE PAGE -->
+    <footer>
+        <p>&copy; 2026 LOGIQUA Automation - Bas-Rhin, Haguenau (67500). Tous droits réservés.</p>
+    </footer>
+
+</body>
+</html>

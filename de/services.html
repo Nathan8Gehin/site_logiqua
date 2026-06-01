@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leistungen - LOGIQUA Automation</title>
+    <style>
+        :root {
+            --orange: #F59000;
+            --noir: #1A1A1A;
+            --blanc: #FFFFFF;
+            --gris-clair: #F4F4F4;
+            --gris-fonce: #4D4D4D;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--blanc); color: var(--noir); line-height: 1.6; }
+        header { background-color: var(--noir); color: var(--blanc); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        .logo-img { max-height: 90px; width: auto; display: block; }
+        nav { display: flex; align-items: center; gap: 3rem; }
+        nav ul { list-style: none; display: flex; gap: 2rem; align-items: center; }
+        nav a { color: var(--blanc); text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        nav a:hover, nav a.actif { color: var(--orange); }
+        .lang-selector { display: flex; gap: 10px; font-size: 1.4rem; border-left: 2px solid #444; padding-left: 20px; }
+        .lang-selector a { text-decoration: none; transition: opacity 0.3s; }
+        .page-header { background-color: var(--noir); color: var(--blanc); padding: 4rem 5%; text-align: center; border-bottom: 5px solid var(--orange); }
+        .page-header h1 { font-size: 3rem; text-transform: uppercase; letter-spacing: 2px; }
+        .page-header p { font-size: 1.2rem; color: var(--gris-clair); margin-top: 1rem; max-width: 800px; margin-left: auto; margin-right: auto; }
+        .services-container { padding: 5rem 5%; background-color: var(--blanc); }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; margin-top: 2rem; }
+        .service-card { background-color: var(--gris-clair); padding: 2.5rem 2rem; border-radius: 8px; border-top: 5px solid var(--orange); box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .service-card:hover { transform: translateY(-8px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .service-card h3 { font-size: 1.5rem; color: var(--noir); margin-bottom: 1.5rem; text-transform: uppercase; display: flex; align-items: center; gap: 10px; }
+        .service-card h3::after { content: ''; display: block; height: 3px; width: 50px; background-color: var(--orange); margin-top: 10px; }
+        .service-card ul { list-style: none; color: var(--gris-fonce); }
+        .service-card ul li { margin-bottom: 12px; position: relative; padding-left: 20px; }
+        .service-card ul li::before { content: '■'; color: var(--orange); font-size: 0.8rem; position: absolute; left: 0; top: 4px; }
+        .partenariat { background-color: var(--noir); color: var(--blanc); padding: 4rem 5%; text-align: center; border-top: 5px solid var(--orange); }
+        .partenariat h2 { color: var(--orange); font-size: 2rem; margin-bottom: 1.5rem; text-transform: uppercase; }
+        .partenariat p { font-size: 1.1rem; max-width: 800px; margin: 0 auto; color: var(--gris-clair); }
+        footer { background-color: #111; color: #888; text-align: center; padding: 2rem 5%; font-size: 0.9rem; }
+        @media (max-width: 768px) {
+            nav { flex-direction: column; gap: 1.5rem; }
+            nav ul { flex-direction: column; gap: 1rem; padding-top: 1.5rem;}
+            header { flex-direction: column; }
+            .logo-img { margin-bottom: 1rem; max-height: 70px; }
+            .page-header h1 { font-size: 2.2rem; }
+            .lang-selector { border-left: none; padding-left: 0; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo"><img src="../2004_Logo2.bmp" alt="Logo" class="logo-img"></div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Startseite</a></li>
+                <li><a href="services.html" class="actif">Leistungen</a></li>
+                <li><a href="histoire.html">Geschichte</a></li>
+                <li><a href="equipe.html">Über uns</a></li>
+                <li><a href="contact.html">Kontakt</a></li>
+            </ul>
+            <div class="lang-selector">
+                <a href="../services.html" title="Français" style="opacity: 0.5;">🇫🇷</a>
+                <a href="../en/services.html" title="English" style="opacity: 0.5;">🇬🇧</a>
+                <a href="services.html" title="Deutsch" style="opacity: 1; font-weight: bold;">🇩🇪</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="page-header">
+        <h1>Unsere Tätigkeitsbereiche</h1>
+        <p>Maßgeschneiderte Dienstleistungen, perfekt angepasst an Ihre Bedürfnisse, unter strikter Einhaltung Ihres Pflichtenhefts und Ihrer Unternehmensphilosophie.</p>
+    </section>
+
+    <main class="services-container">
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Elektrokonstruktion</h3>
+                <ul>
+                    <li>Machbarkeitsstudien und präzise Hardwaredefinition.</li>
+                    <li>Erstellung von Stromlaufplänen mit Autocad, Eplan P8 und See Electrical.</li>
+                    <li>Ausarbeitung von Funktionsanalysen in enger Abstimmung mit dem Kunden.</li>
+                    <li>Festlegung der globalen System- und Hardwarearchitektur.</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <h3>Industrieautomation</h3>
+                <ul>
+                    <li>Programmierung von speicherprogrammierbaren Steuerungen (SPS).</li>
+                    <li>Entwicklung fortschrittlicher Bedienpulte und komplexer Visualisierungssysteme (HMI/SCADA).</li>
+                    <li>Programmierung von präzisen Achssteuerungen und Positionierungen.</li>
+                    <li>Anbindung verschiedenster Systeme: Frequenzumrichter, Roboter, Wiegesysteme, Temperaturregler...</li>
+                    <li>Parametrierung industrieller Netzwerke.</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <h3>Elektroarbeiten & Verkabelung</h3>
+                <ul>
+                    <li>Lieferung hochwertiger industrieller Elektrokomponenten.</li>
+                    <li>Fachgerechter Bau von Schaltschränken und Steuerungsgehäusen.</li>
+                    <li>Maschinenverkabelung und elektrische Installationen direkt vor Ort.</li>
+                    <li>Schlüsselfertige Gesamtlösungen in enger Partnerschaft mit der Firma Delta-Fil.</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <h3>Inbetriebnahme & Betreuung</h3>
+                <ul>
+                    <li>Umfassende Prüfung der Anlagen und aller Sicherheitsfunktionen.</li>
+                    <li>Feinabstimmung und funktionale Inbetriebnahme der Ausrüstung vor Ort.</li>
+                    <li>Produktionsbegleitung zur optimalen Leistungssteigerung Ihrer Maschinen.</li>
+                    <li>Kontinuierliche Optimierung, Fehlersuche und regelmäßige Wartung der Anlagen.</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <section class="partenariat">
+        <h2>Maschinen & Prozesse</h2>
+        <p>Wir übernehmen die Planung und Realisierung von Sondermaschinen sowie spezifischen industriellen Prozessen. Unser Know-how umfasst die Umsetzung kontinuierlicher und diskontinuierlicher Fertigungsprozesse, vollständig integriert mit Rezepturverwaltung und lückenloser industrieller Datenerfassung.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 LOGIQUA Automation - Bas-Rhin, Haguenau (67500). Alle Rechte vorbehalten.</p>
+    </footer>
+</body>
+</html>
